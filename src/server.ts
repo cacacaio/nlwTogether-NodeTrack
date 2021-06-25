@@ -6,6 +6,7 @@ import express, { NextFunction, Request, Response } from 'express'
 
 import { router } from './routes'
 
+process.env.key = '4f9aaffe5e864530204f758ab98df580'
 const app = express()
 app.use(express.json())
 app.use(router)
@@ -13,7 +14,7 @@ app.use((err: Error, _request: Request, response: Response, _next: NextFunction)
   if (err instanceof Error) {
     return response.status(400).json({
       error: err.message,
-      stack: err.stack,
+      // stack: err.stack,
     })
   }
 

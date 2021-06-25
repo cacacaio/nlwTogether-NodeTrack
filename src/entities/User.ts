@@ -2,7 +2,6 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 
 import { v4 as uuid } from 'uuid'
 
-//Definir Table pro Entity
 @Entity('users')
 class User {
   @PrimaryColumn()
