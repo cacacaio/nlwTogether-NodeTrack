@@ -8,12 +8,11 @@ interface IPayload {
 
 export const ensureAuth = (req: Request, res: Response, next: NextFunction) => {
   const tokenBearer = req.headers.authorization
-
-  const token = tokenBearer.split(' ')[1]
-
   if (!tokenBearer) {
-    return res.status(401).end()
+    return res.json('No JWT on the Request')
   }
+  const token = tokenBearer.split(' ')[1]
+  console.log('Logado : ' + token)
   try {
     const { sub } = verify(token, process.env.key) as IPayload
     req.userId = sub

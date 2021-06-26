@@ -4,13 +4,13 @@ import { CreateComplimentsService } from '../services/CreateComplimentsService'
 
 export class CreateComplimentController {
   async handle(req: Request, res: Response) {
-    const { tag_id, user_sender, user_receiver, message } = req.body
-
+    const { tag_id, user_receiver, message } = req.body
+    const { userId } = req
     const createCompliment = new CreateComplimentsService()
 
     const compliment = await createCompliment.execute({
       tag_id,
-      user_sender,
+      user_sender: userId,
       user_receiver,
       message,
     })
