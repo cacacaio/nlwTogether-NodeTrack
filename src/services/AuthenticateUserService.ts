@@ -26,7 +26,7 @@ export class AuthenticateUserService {
       return 'Email/Password Incorrect'
     }
 
-    const token = sign({ email: user.email }, '4f9aaffe5e864530204f758ab98df580', {
+    const token = sign({ email: user.email }, process.env.KEY, {
       subject: user.id,
       expiresIn: '1d',
     })
