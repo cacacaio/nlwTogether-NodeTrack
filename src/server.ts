@@ -27,4 +27,4 @@ app.use((err: Error, _request: Request, response: Response, _next: NextFunction)
   })
 })
 
-app.listen(3000, () => console.log('Server is Running'))
+app.listen(3001, () => console.log('Server is Running'))

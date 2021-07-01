@@ -30,6 +30,6 @@ export class AuthenticateUserService {
       subject: user.id,
       expiresIn: '1d',
     })
-    return token
+    return { token: token, name: user.name, email: user.email, id: user.id }
   }
 }
