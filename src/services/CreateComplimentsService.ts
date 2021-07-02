@@ -16,16 +16,17 @@ export class CreateComplimentsService {
     }
     const complimentsRepositories = getCustomRepository(ComplimentsRepositories)
     const userRepository = getCustomRepository(UsersRepositories)
+    console.log(user_receiver)
 
-    const userReceiverExists = userRepository.findOne(user_receiver)
-
+    const userReceiverExists = await userRepository.findOne({ where: { email: user_receiver } })
+    console.log(userReceiverExists)
     if (!userReceiverExists) {
       throw new Error("Complimented User Doesn't Exist ")
     }
 
     const compliment = complimentsRepositories.create({
       tag_id,
-      user_receiver,
+      user_receiver: userReceiverExists.id,
       user_sender,
       message,
     })
